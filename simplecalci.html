@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://127.0.0.1:5500/simplecalci.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+      body {background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);}
+
+
+     h1{
+        color: black;
+     }
+    input, button {
+     
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+      background-color: white;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      text-align: center;
+ 
+    }
+    button {
+        cursor: pointer;
+        margin: 5px;
+    
+    }
+    .operatorcontainer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+  
+
+    }
+    h1{
+    text-align: center;
+   }
+   p{
+    text-align: center;
+    font-size: 20px;
+    color: black;
+   }
+   label{
+    text-align: center;
+    font-size: 20px;
+    color: black;
+ 
+    font-weight: 600;        }
+
+    .inputcontainer{
+          display: flex;
+         flex-direction: column;
+         align-items: center;
+         margin: 10px 0;
+    }
+
+.resultbox {
+  width: 150px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+}  
+
+
+
+
+      
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+
+
+
+
+    <p>Enter two numbers and select an operation:</p><br>
+   <div class="inputcontainer">  
+    <label> Enter number1</label>
+<input type="number" id="num1" placeholder="Enter first number">
+   </div>
+   <div class="inputcontainer">
+<label> Enter number2</label><input type="number" id="num2" placeholder="Enter second number">
+</div>
+<div class="operatorcontainer">
+    <h2>Choose an operation:</h2>
+<button class="add">+</button><br>
+<button class="subtract">-</button><br>
+<button class="multiply">*</button><br>
+<button class="divide">/</button><br></div>
+<div class="inputcontainer">
+  <input class="resultbox" id="result" placeholder="Result" readonly>
+  <button class="clearbtn" onclick="location.reload()">Clear</button>
+</div>
+
+
+<script>
+ const  number1 = document.getElementById("num1");
+   const  number2 = document.getElementById("num2");
+ let   result = document.getElementById("result");
+  const  add = document.querySelector(".add");
+  const  subtract = document.querySelector(".subtract");
+  const  multiply = document.querySelector(".multiply");
+  const  divide = document.querySelector(".divide");
+    add.addEventListener("click", function() {
+        result.value = parseFloat(number1.value) + parseFloat(number2.value);
+    });
+    subtract.addEventListener("click", function() {
+        result.value = parseFloat(number1.value) - parseFloat(number2.value);
+    });
+    multiply.addEventListener("click", function() {
+        result.value = parseFloat(number1.value) * parseFloat(number2.value);
+    });
+    divide.addEventListener("click", function() {
+        if (parseFloat(number2.value) !== 0) {
+            result.value = parseFloat(number1.value) / parseFloat(number2.value);
+        } else {
+            result.value = "Cannot divide by zero";
+        }
+    });
+</script>
+    
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
