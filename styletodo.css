@@ -1,0 +1,15 @@
+.col-md-8 a{
+    color:black !important;
+
+
+}
+.appname{
+    font-size: 120px !important;
+}
+.lead{
+    font-size:25px !important;
+   
+}
+*{
+  background-color: #ededed;
+}
